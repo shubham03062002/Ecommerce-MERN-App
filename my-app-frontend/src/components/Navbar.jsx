@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useAuth } from "../AuthContext"; // Import the useAuth hook
@@ -14,8 +14,15 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
+    localStorage.clear("uid");
     toastr.success("Logout successful!");
+    localStorage.clear("token")
+    console.log(user);
   };
+
+  useEffect(() => {
+    console.log("Is logged in:", isLoggedIn); // Log the isLoggedIn state for debugging
+  }, [isLoggedIn]); // Re-run this effect when isLoggedIn changes
 
   return (
     <nav
@@ -74,20 +81,26 @@ const Navbar = () => {
           </ul>
           <div className="buttons text-center" style={{ display: "contents" }}>
             {isLoggedIn ? (
-              <Dropdown align="end">
-                <Dropdown.Toggle
-                  variant="outline-dark"
-                  id="dropdown-basic"
-                  className="d-flex align-items-center"
-                >
-                  <i className="fa fa-user-circle mr-2"></i>{" "}
-                  {user?.email || "User"}
-                </Dropdown.Toggle>
+              <>
+                <Dropdown align="end">
+                  <Dropdown.Toggle
+                    variant="outline-dark"
+                    id="dropdown-basic"
+                    className="d-flex align-items-center"
+                  >
+                    <i className="fa fa-user-circle mr-2"></i> {user?.email || "User"}
+                  </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                  <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+                  <Dropdown.Menu>
+                    {user?.isAdmin && (
+                      <Dropdown.Item as={NavLink} to="/admin/dashboard">
+                        Admin Dashboard
+                      </Dropdown.Item>
+                    )}
+                    <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </>
             ) : (
               <>
                 <NavLink to="/login" className="btn btn-outline-dark m-2">
@@ -96,9 +109,13 @@ const Navbar = () => {
                 <NavLink to="/register" className="btn btn-outline-dark m-2">
                   <i className="fa fa-user-plus mr-1"></i> Register
                 </NavLink>
+                <NavLink to="/login-admin" className="btn btn-outline-dark m-2">
+                  <i className="fa fa-user-shield mr-1"></i> Admin Login
+                </NavLink>
               </>
             )}
-            <NavLink to="/cart" className="btn btn-outline-dark m-2">
+
+            <NavLink to={`/cart?userId=${user?._id}`} className="btn btn-outline-dark m-2">
               <i className="fa fa-cart-shopping mr-1"></i> Cart ({state.length})
             </NavLink>
           </div>

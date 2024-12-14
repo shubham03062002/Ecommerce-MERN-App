@@ -1,0 +1,214 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .product-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .product-info {
+    margin-top: 10px;
+  }
+  
+  .product-info h3 {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .product-info p {
+    color: #777;
+  }
+  
+  .product-info strong {
+    font-weight: bold;
+  }
+  
+  .add-to-cart-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #218838;
+  }
+  
+
+
+  .navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    color: #fff !important;
+  }
+  
+  .nav-link {
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #ffeb3b !important; /* Highlight effect */
+  }
+  
+  .btn-light {
+    border-radius: 25px;
+  }
+  
+  .navbar-toggler {
+    border: none;
+  }
+  
+
+
+
+  /* Global Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Navbar Styles */
+.navbar {
+  background: linear-gradient(45deg, #1f1f1f, #333);
+  border-bottom: 2px solid #444;
+}
+
+.navbar .navbar-toggler {
+  border: 1px solid #444;
+  background-color: transparent;
+}
+
+.navbar-toggler-icon {
+  background-color: #fff;
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: #d0d0d0 !important;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+  color: #ff4081 !important;
+}
+
+.navbar-brand .logo-icon {
+  font-size: 40px;
+  color: #ff4081;
+}
+
+.navbar-brand .app-name {
+  color: #f0f0f0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.navbar .dropdown-toggle {
+  color: #f0f0f0;
+  background: transparent;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.navbar .dropdown-toggle:hover {
+  color: #ff4081;
+}
+
+.navbar .dropdown-item {
+  color: #ccc;
+  background: #222;
+}
+
+.navbar .dropdown-item:hover {
+  background: #444;
+  color: #fff;
+}
+
+.btn-outline-light {
+  color: #f0f0f0;
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  color: #ff4081;
+  border-color: #ff4081;
+  background: transparent;
+}
+
+/* Buttons in Navbar */
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Cart Icon */
+.fa-cart-shopping {
+  font-size: 1.5rem;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+  .navbar-nav {
+    text-align: center;
+    width: 100%;
+  }
+
+  .navbar .buttons {
+    margin-top: 15px;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .navbar .dropdown-toggle {
+    font-size: 0.9rem;
+  }
+}

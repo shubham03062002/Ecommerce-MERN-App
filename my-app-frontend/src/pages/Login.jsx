@@ -21,17 +21,19 @@ const Login = () => {
         email,
         password,
       });
-      const userData = res.data.user; // Assuming the response contains a user object
-      localStorage.setItem("token", res.data.token);
-      login(userData); // Pass user data to login function
+      const { token, uid} = res.data;
+      const userData = { uid, email, token }; // Create a user object
+      localStorage.setItem("token", token);
+      localStorage.setItem("uid",uid)
+      login(userData); // Update the context
       toastr.success("Login successful!");
-      navigate("/"); // Redirect to home page after successful login
+      navigate("/"); // Redirect to home page
     } catch (err) {
       setError("Invalid login credentials");
       toastr.error("Invalid login credentials");
     }
   };
-
+  
   return (
     <>
       <Navbar /> {/* Assuming you have a Navbar component */}

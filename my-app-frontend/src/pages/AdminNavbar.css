@@ -1,0 +1,25 @@
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    color: #fff !important;
+  }
+  
+  .nav-link {
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #ffeb3b !important; /* Highlight effect */
+  }
+  
+  .btn-light {
+    border-radius: 25px;
+  }
+  
+  .navbar-toggler {
+    border: none;
+  }
+  

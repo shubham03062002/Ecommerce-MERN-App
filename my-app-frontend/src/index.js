@@ -20,11 +20,20 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Checkout from './pages/Checkout';
 import PageNotFound from './pages/PageNotFound';
+import Categories from './pages/Categories'; // Import Categories
+import CategoryDetails from './pages/CategoryDetails'; // Import CategoryDetails
+import AdminLogin from './pages/AdminLogin';
+import AdminRegister from './pages/AdminRegister';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminMessages from './pages/AdminMessages';
+import ProductCRUD from './pages/ProductCRUD';
+import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute
+
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <AuthProvider> {/* Wrap your application with AuthProvider */}
+      <AuthProvider>
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -32,10 +41,42 @@ ReactDOM.render(
             <Route path="/product/:id" element={<Product />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/cart" element={<Cart />} />
+            
+            {/* Cart - Accessible to any logged-in user */}
+            <Route 
+              path="/cart" 
+              element={
+                <ProtectedRoute>
+                  <Cart />
+                </ProtectedRoute>
+              } 
+            />
+            
             <Route path="/login" element={<Login />} />
+            <Route path="/login-admin" element={<AdminLogin />} />
+            <Route path="/admin/messages" element={<AdminMessages />} />
+            <Route path="/admin/register" element={<AdminRegister />} />
             <Route path="/register" element={<Register />} />
             <Route path="/checkout" element={<Checkout />} />
+            
+            {/* Admin Routes */}
+            <Route 
+              path="/admin/dashboard" 
+              element={
+                <ProtectedRoute adminOnly={true}>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/productcrud" 
+              element={
+                <ProtectedRoute adminOnly={true}>
+                  <ProductCRUD />
+                </ProtectedRoute>
+              } 
+            />
+            
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </Router>
